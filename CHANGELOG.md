@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/willthong/pi-contained/compare/v1.0.2...v1.0.3) (2026-06-10)
+
+
+### Bug Fixes
+
+* Add packages write ([5a5315b](https://github.com/willthong/pi-contained/commit/5a5315babbd0ab464e4327a259b9dea7d3f21a4e))
+
 ## [1.0.2](https://github.com/willthong/pi-contained/compare/v1.0.1...v1.0.2) (2026-06-10)
 
 
