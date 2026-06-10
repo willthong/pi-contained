@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Release Please
         id: release
-        uses: googleapis/release-please-action@v17
+        uses: googleapis/release-please-action@v5
 
   docker-build:
     if: ${{ needs.release.outputs.release_created }}
