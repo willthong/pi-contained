@@ -12,17 +12,19 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
+      version: ${{ steps.release.outputs.version }}
     steps:
       - name: Release Please
         id: release
         uses: googleapis/release-please-action@v5
         with:
           release-type: simple
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
 
   docker-build:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
     runs-on: ubuntu-latest
 
     steps:
