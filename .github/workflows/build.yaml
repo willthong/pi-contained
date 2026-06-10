@@ -11,6 +11,8 @@ jobs:
       - name: Release Please
         id: release
         uses: googleapis/release-please-action@v5
+        with:
+          release-type: simple
 
   docker-build:
     if: ${{ needs.release.outputs.release_created }}
