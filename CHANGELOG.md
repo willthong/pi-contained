@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/willthong/pi-contained/compare/v1.0.1...v1.0.2) (2026-06-10)
+
+
+### Bug Fixes
+
+* Change release please variable parsing ([a9effbc](https://github.com/willthong/pi-contained/commit/a9effbcdd08e0fd1a8afcbfe210729eab288585d))
+* Change release please variable parsing ([f52c61e](https://github.com/willthong/pi-contained/commit/f52c61eb32539e9cdd6aa6c7129c9c9f2e329f17))
+
 ## [1.0.1](https://github.com/willthong/pi-contained/compare/v1.0.0...v1.0.1) (2026-06-10)
 
 
