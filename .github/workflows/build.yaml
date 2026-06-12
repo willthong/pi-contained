@@ -10,40 +10,25 @@ permissions:
   pull-requests: write
 
 jobs:
-  release-please:
-    runs-on: ubuntu-latest
-    outputs:
-      releases_created: ${{ steps.release.outputs.releases_created }}
-      version: ${{ steps.release.outputs.version }}
-    steps:
-      - name: Release Please
-        id: release
-        uses: googleapis/release-please-action@v5
-        with:
-          release-type: simple
 
   docker-build:
-    needs: release-please
-    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
-    runs-on: ubuntu-latest
 
     steps:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v6
-        with:
-          images: ghcr.io/willthong/pi-contained
-          tags: |
-            type=semver,pattern={{version}},value=${{ needs.release-please.outputs.version }}
-            type=raw,value=latest
-      
+      - name: Compute next version
+        id: svu
+        run: |
+          wget -q https://github.com/caarlos0/svu/releases/download/v3.4.1/svu_3.4.1_linux_amd64.tar.gz
+          tar -xzf svu_3.4.1_linux_amd64.tar.gz
+          chmod +x svu
+          echo "version=$(./svu)" >> "$GITHUB_OUTPUT"
+
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          provenance: false
-          sbom: false
+          tags: |
+            ghcr.io/willthong/pi-contained:${{ steps.svu.outputs.version }}
+            ghcr.io/willthong/pi-contained:latest
