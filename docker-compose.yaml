@@ -1,0 +1,3 @@
+services:
+  pi:
+    image: ghcr.io/willthong/pi-contained:latest
