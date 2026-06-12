@@ -24,7 +24,7 @@ jobs:
           wget -q https://github.com/caarlos0/svu/releases/download/v3.4.1/svu_3.4.1_linux_amd64.tar.gz
           tar -xzf svu_3.4.1_linux_amd64.tar.gz
           chmod +x svu
-          echo "version=$(./svu)" >> "$GITHUB_OUTPUT"
+          echo "version=$(./svu next)" >> "$GITHUB_OUTPUT"
 
       - name: Build and push
         uses: docker/build-push-action@v7
