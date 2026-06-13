@@ -6,4 +6,4 @@ RUN mkdir /home/pi && \
 
 WORKDIR /home/pi
 
-CMD pi
+CMD ["pi"]

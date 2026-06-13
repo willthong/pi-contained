@@ -1,3 +1,5 @@
 services:
   pi:
     image: ghcr.io/willthong/pi-contained:latest
+    stdin_open: true
+    tty: true
