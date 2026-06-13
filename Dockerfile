@@ -13,4 +13,4 @@ RUN python3 /tmp/patch-tau-mirror.py /root/.pi/agent/npm/node_modules/tau-mirror
 
 WORKDIR /root
 
-CMD ["pi"]
+CMD ["pi", "-p"]
