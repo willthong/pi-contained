@@ -1,8 +1,6 @@
 services:
   pi:
-    image: ghcr.io/willthong/pi-contained:latest
-    stdin_open: true
-    tty: true
+    build: .
     ports:
       - 3001:3001
     environment:

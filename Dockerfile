@@ -11,6 +11,9 @@ RUN mkdir /root/.pi && \
 COPY patch-tau-mirror.py /tmp/patch-tau-mirror.py
 RUN python3 /tmp/patch-tau-mirror.py /root/.pi/agent/npm/node_modules/tau-mirror/extensions/mirror-server.ts
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 WORKDIR /root
 
-CMD ["pi", "-p"]
+ENTRYPOINT ["/entrypoint.sh"]
