@@ -1,3 +1,11 @@
 services:
   pi:
     image: ghcr.io/willthong/pi-contained:latest
+    stdin_open: true
+    tty: true
+    ports:
+      - "3001:3001"
+    environment:
+      TAU_DISABLED=0 # Set to 1 if you don't want the web UI
+    volumes:
+      pi_config:/home/.pi
