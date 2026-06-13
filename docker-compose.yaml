@@ -8,7 +8,7 @@ services:
     environment:
       - TAU_DISABLED=0 # Set to 1 if you don't want the web UI
     volumes:
-      - pi-config:/home/.pi
+      - pi-config:/root/.pi
 
 volumes:
   pi-config:
