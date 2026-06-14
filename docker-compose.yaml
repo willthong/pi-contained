@@ -3,10 +3,6 @@ services:
     build: .
     ports:
       - 3001:3001
-    environment:
-      - TAU_DISABLED=0 # Set to 1 if you don't want the web UI
     volumes:
-      - pi-config:/root/.pi
-
-volumes:
-  pi-config:
+      - ./pi-config:/root/.pi
+      - ./projects:/root/projects
