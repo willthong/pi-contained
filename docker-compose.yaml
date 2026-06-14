@@ -4,9 +4,7 @@ services:
     ports:
       - 3001:3001
     environment:
-      - TAU_DISABLED=0 # Set to 1 if you don't want the web UI
+      - GH_TOKEN=${GH_TOKEN:-}
     volumes:
-      - pi-config:/root/.pi
-
-volumes:
-  pi-config:
+      - ./pi-config:/root/.pi
+      - ./projects:/root/projects
