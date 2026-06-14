@@ -7,6 +7,6 @@ RUN mkdir /root/.pi && \
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /root
+WORKDIR /root/projects
 
 ENTRYPOINT ["/entrypoint.sh"]
