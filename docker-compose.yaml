@@ -5,6 +5,7 @@ services:
       - 3001:3001
     environment:
       - GH_TOKEN=${GH_TOKEN:-}
+      - GITHUB_PAT=${GITHUB_PAT:-}
     volumes:
       - ./pi-config:/root/.pi
       - ./projects:/root/projects
