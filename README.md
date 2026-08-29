@@ -27,13 +27,12 @@ Keep skills in their own git repository (a `skills/` directory of `SKILL.md` fol
 ```json
 // pi-config/agent/settings.json
 {
-  "packages": ["https://github.com/willthong/agent-skills@v1"]
+  "packages": ["https://github.com/willthong/agent-skills"]
 }
 ```
 
-- Pin a tag or commit ref (`@v1`); pinned refs are never moved by `pi update`.
-- Bump deliberately: `pi install git:github.com/willthong/agent-skills@new-ref`
+- Without a ref, Pi tracks the repository's default branch (`main`) and pulls the latest commit on every update — so skills refresh on each `docker compose up -d` (`entrypoint.sh` runs `pi update --extensions` before starting pi).
+- To pin for reproducibility, append a tag or commit ref (`@v1`); pinned refs are reconciled but never moved by `pi update`. Bump deliberately with `pi install git:github.com/willthong/agent-skills@new-ref`.
 - Pi clones the package to `~/.pi/agent/git/<host>/<path>`, which persists back into `pi-config/` on the host.
-- On container start, `entrypoint.sh` runs `pi update --extensions` to reconcile pinned refs, so skills refresh on every `docker compose up -d`.
 
 > **Security:** skills can instruct the model to run arbitrary commands. Review the contents of any skills repository before installing it.
