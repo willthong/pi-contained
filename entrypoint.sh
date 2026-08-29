@@ -29,6 +29,15 @@ GIT_HELPER
 fi
 
 # ------------------------------------------------------------------
+# pi packages (skills, extensions)
+# ------------------------------------------------------------------
+
+# Reconcile pinned git refs and refresh packages from settings
+# (e.g. skills loaded from a git repo via the "packages" setting).
+# Non-fatal: if this fails, pi still starts below.
+pi update --extensions
+
+# ------------------------------------------------------------------
 # pi startup
 # ------------------------------------------------------------------
 
