@@ -36,9 +36,4 @@ Keep skills in their own git repository (a `skills/` directory of `SKILL.md` fol
 - Pi clones the package to `~/.pi/agent/git/<host>/<path>`, which persists back into `pi-config/` on the host.
 - On container start, `entrypoint.sh` runs `pi update --extensions` to reconcile pinned refs, so skills refresh on every `docker compose up -d`.
 
-**Prerequisites (not yet in this repo):**
-
-- Add `git` to the `apk add` line in the `Dockerfile` (needed to clone git packages).
-- Add `pi update --extensions` to `entrypoint.sh` before starting pi.
-
 > **Security:** skills can instruct the model to run arbitrary commands. Review the contents of any skills repository before installing it.
