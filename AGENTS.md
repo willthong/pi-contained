@@ -24,6 +24,10 @@ A Docker-based container setup for running the pi coding agent in an isolated en
   git remote set-url origin https://x-access-token:${GITHUB_PAT}@github.com/org/repo.git
   ```
 
+## Web UI (PI WEB)
+- The container serves PI WEB on port `8504` (`pi-web-sessiond` + `pi-web-server`, started by `entrypoint.sh`).
+- Set `PI_WEB_DISABLED=1` to skip both PI WEB processes; the default is `0`.
+
 ## Conventions
 - Branch naming: `wt/<feature-name>`
 - All changes should be tested with `docker compose build` before pushing
