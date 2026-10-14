@@ -28,6 +28,12 @@ A Docker-based container setup for running the pi coding agent in an isolated en
 - The container serves PI WEB on port `8504` (`pi-web-sessiond` + `pi-web-server`, started by `entrypoint.sh`).
 - Set `PI_WEB_DISABLED=1` to skip both PI WEB processes; the default is `0`.
 
+## Paseo
+- The container runs the Paseo daemon (`paseo daemon run`, supervised by `entrypoint.sh`) so Pi can be driven from the Paseo mobile and desktop apps.
+- State lives in `~/.paseo` (mounted from `./paseo-config`); no port is published and the relay is outbound only.
+- Set `PASEO_DISABLED=1` to skip the daemon; the default is `0`.
+- Pair with `docker exec -it pi paseo daemon pair` (`--relay` on first use).
+
 ## Conventions
 - Branch naming: `wt/<feature-name>`
 - All changes should be tested with `docker compose build` before pushing
