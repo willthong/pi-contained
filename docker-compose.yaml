@@ -2,7 +2,7 @@ services:
   pi:
     build: .
     ports:
-      - 127.0.0.1:8504:8504
+      - 8504:8504
     environment:
       - GH_TOKEN=${GH_TOKEN:-}
       - GITHUB_PAT=${GITHUB_PAT:-}

@@ -18,7 +18,7 @@ The container serves the [PI WEB](https://pi-web.dev) web UI on port 8504. `entr
 - `pi-web-sessiond` — long-lived session daemon that owns agent sessions and terminals
 - `pi-web-server` — web/API server, served on port 8504
 
-The container binds `0.0.0.0:8504` internally so Docker can forward to it, and `docker-compose.yaml` publishes it as `127.0.0.1:8504` so it is only reachable from the host machine. Adjust the host side of the port mapping if you need LAN access.
+The container binds `0.0.0.0:8504` internally and `docker-compose.yaml` publishes the port on all host interfaces, so any machine on the LAN can reach it at `http://<host>:8504`. PI WEB has no built-in authentication, so only expose it this way on a trusted network.
 
 To run the container without the web UI, set `PI_WEB_DISABLED=1` (for example in `.env`):
 
