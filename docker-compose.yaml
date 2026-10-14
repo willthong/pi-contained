@@ -1,14 +1,12 @@
 services:
   pi:
     build: .
-    ports:
-      - 8504:8504
-    # Paseo uses an outbound-only relay, so no Paseo port is published.
+    # No ports are published: Paseo reaches the apps through its outbound-only
+    # relay, and the daemon itself binds loopback inside the container.
     stop_grace_period: 20s
     environment:
       - GH_TOKEN=${GH_TOKEN:-}
       - GITHUB_PAT=${GITHUB_PAT:-}
-      - PI_WEB_DISABLED=${PI_WEB_DISABLED:-0} # Set to 1 to disable the PI WEB web UI
       # Set to 1 to run the container without the Paseo daemon.
       - PASEO_DISABLED=${PASEO_DISABLED:-0}
       # Required only if PASEO_LISTEN is changed to something other than

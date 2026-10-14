@@ -115,19 +115,6 @@ else
 fi
 
 # ------------------------------------------------------------------
-# PI WEB
-# ------------------------------------------------------------------
-
-if [ "$PI_WEB_DISABLED" = "1" ] || [ "$PI_WEB_DISABLED" = "true" ]; then
-    echo "PI WEB disabled (PI_WEB_DISABLED=$PI_WEB_DISABLED)"
-else
-    # The session daemon owns agent sessions and terminals; the web server
-    # serves the UI/API. Bind 0.0.0.0 so the published container port works.
-    pi-web-sessiond &
-    PI_WEB_HOST=0.0.0.0 PI_WEB_PORT=8504 pi-web-server &
-fi
-
-# ------------------------------------------------------------------
 # pi startup
 # ------------------------------------------------------------------
 
