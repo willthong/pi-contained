@@ -7,6 +7,10 @@ services:
     environment:
       - GH_TOKEN=${GH_TOKEN:-}
       - GITHUB_PAT=${GITHUB_PAT:-}
+      # Commit identity for the container's global git config. Empty
+      # leaves git's default (root@<container-host>) in place.
+      - GIT_USER_NAME=${GIT_USER_NAME:-}
+      - GIT_USER_EMAIL=${GIT_USER_EMAIL:-}
       # Set to 1 to run the container without the Paseo daemon.
       - PASEO_DISABLED=${PASEO_DISABLED:-0}
       # Required only if PASEO_LISTEN is changed to something other than

@@ -1,6 +1,20 @@
 #!/bin/sh
 
 # ------------------------------------------------------------------
+# Git identity
+# ------------------------------------------------------------------
+
+# Commit as the operator rather than falling back to root@<host>. Both
+# variables come from docker-compose.yaml (see .env). Each is optional:
+# an unset one is left at git's default.
+if [ -n "$GIT_USER_NAME" ]; then
+    git config --global user.name "$GIT_USER_NAME"
+fi
+if [ -n "$GIT_USER_EMAIL" ]; then
+    git config --global user.email "$GIT_USER_EMAIL"
+fi
+
+# ------------------------------------------------------------------
 # Git authentication
 # ------------------------------------------------------------------
 

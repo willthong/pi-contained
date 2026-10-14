@@ -11,6 +11,19 @@ OPENROUTER_API_KEY=sk-11111aaaa11111aaaaaa111111aaaa
 3. Launch the container with `docker-compose up -d`
 4. Pair the Paseo app (see [Paseo](#paseo)) or attach a shell with `docker exec -it pi sh`
 
+## Git identity
+
+Pi commits from inside the container, which needs a git identity. Set `GIT_USER_NAME` and `GIT_USER_EMAIL` (for example in `.env`); `entrypoint.sh` writes them into the container's global git config on every start:
+
+```
+GIT_USER_NAME=Your Name
+GIT_USER_EMAIL=you@example.com
+```
+
+Both are optional and independent: leaving one unset leaves that field at git's default. A repository's own `.git/config` still takes precedence, so clear any per-repo `user.name`/`user.email` if you want this identity to apply there.
+
+> Without either variable, git falls back to `root@<container-host>` (or fails, if it cannot detect a hostname).
+
 ## Paseo
 
 The container runs the [Paseo](https://paseo.sh) daemon alongside Pi, so you can drive Pi from the Paseo mobile and desktop apps. `entrypoint.sh` starts it with `paseo daemon run`, supervises it, restarts it if the launcher exits, and sends its logs to the container's stdout (`docker logs pi`).
