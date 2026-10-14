@@ -2,10 +2,11 @@ services:
   pi:
     build: .
     ports:
-      - 3001:3001
+      - 127.0.0.1:8504:8504
     environment:
       - GH_TOKEN=${GH_TOKEN:-}
       - GITHUB_PAT=${GITHUB_PAT:-}
+      - PI_WEB_DISABLED=${PI_WEB_DISABLED:-0} # Set to 1 to disable the PI WEB web UI
     volumes:
       - ./pi-config:/root/.pi
       - ./projects:/root/projects
