@@ -1,3 +1,6 @@
 {
-  "packages": ["https://github.com/willthong/agent-skills"]
+  "packages": [
+    "https://github.com/willthong/agent-skills",
+    "npm:@kivlor/pi-ask-user@0.1.2"
+  ]
 }

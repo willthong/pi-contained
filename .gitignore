@@ -137,6 +137,9 @@ dist
 !.yarn/sdks
 !.yarn/versions
 
+# Pi-managed npm package installs (populated at container startup)
+pi-config/agent/npm/
+
 # Paseo daemon state (contains the pairing keypair and agent data)
 paseo-config/
 

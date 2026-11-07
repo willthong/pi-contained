@@ -102,3 +102,9 @@ Keep skills in their own git repository (a `skills/` directory of `SKILL.md` fol
 - Pi clones the package to `~/.pi/agent/git/<host>/<path>`, which persists back into `pi-config/` on the host.
 
 > **Security:** skills can instruct the model to run arbitrary commands. Review the contents of any skills repository before installing it.
+
+### Asking the user questions
+
+`pi-config/agent/settings.json` also installs [`@kivlor/pi-ask-user`](https://www.npmjs.com/package/@kivlor/pi-ask-user) pinned to `0.1.2`, which registers an `ask_user` tool. The model uses it to pause and ask one focused question through Pi's dialog UI, including over Paseo's RPC transport. In non-interactive runs (`json`/`print`) the tool returns immediately and the model proceeds on its own judgment instead of blocking.
+
+The package is pinned because it executes inside the Pi process and an unversioned npm source would track whatever the maintainer publishes next. Bump the pin deliberately after reviewing the new release.
