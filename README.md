@@ -67,15 +67,7 @@ Previously paired devices have to pair again. Removing the whole `./paseo-config
 - `PASEO_PASSWORD` is required if you change `PASEO_LISTEN` to bind beyond loopback. `entrypoint.sh` refuses to start Paseo in that case. The default loopback setup needs no password.
 - `PASEO_DISABLED=1` skips the daemon; Pi still starts and the container stays up. The default is `0`.
 - Local speech/dictation is off by default (`PASEO_DICTATION_ENABLED=false`, `PASEO_VOICE_MODE_ENABLED=false`) because it downloads large models on first run. Set either to `true` to enable it.
-- Paseo's version is pinned by the `PASEO_VERSION` build arg in the `Dockerfile`.
-
-## Migration from PI WEB
-
-Port `8504` and the PI WEB processes (`pi-web-sessiond` and `pi-web-server`) were removed. There is no automatic migration:
-
-- Paseo replaces PI WEB for remote access. Pair again with the command above.
-- `~/.pi-web` is no longer started or persisted, but existing data on disk is left untouched.
-- If a reverse proxy pointed at `8504`, repoint it at whatever you use for Paseo. The container no longer listens on that port.
+- Paseo and Pi versions are pinned by the `PASEO_VERSION` and `PI_VERSION` build args in the `Dockerfile`.
 
 ## Agent settings
 
