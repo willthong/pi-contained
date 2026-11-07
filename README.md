@@ -63,6 +63,7 @@ Previously paired devices have to pair again. Removing the whole `./paseo-config
 ### Security and configuration
 
 - The daemon binds `127.0.0.1:6767` inside the container. No Paseo port is published and relay traffic is outbound only.
+- `gh` (GitHub CLI) is installed in the image for Paseo's GitHub diff/PR views. It authenticates from the same `GH_TOKEN` that `entrypoint.sh` exports for git.
 - `PASEO_PASSWORD` is required if you change `PASEO_LISTEN` to bind beyond loopback. `entrypoint.sh` refuses to start Paseo in that case. The default loopback setup needs no password.
 - `PASEO_DISABLED=1` skips the daemon; Pi still starts and the container stays up. The default is `0`.
 - Local speech/dictation is off by default (`PASEO_DICTATION_ENABLED=false`, `PASEO_VOICE_MODE_ENABLED=false`) because it downloads large models on first run. Set either to `true` to enable it.

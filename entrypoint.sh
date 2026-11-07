@@ -18,6 +18,14 @@ fi
 # Git authentication
 # ------------------------------------------------------------------
 
+# gh (and tools that shell out to it) read GH_TOKEN, while this setup
+# provides the token as GITHUB_PAT. Export a GH_TOKEN fallback before the
+# daemon and pi start so Paseo can use gh without extra configuration.
+if [ -z "$GH_TOKEN" ] && [ -n "$GITHUB_PAT" ]; then
+    GH_TOKEN="$GITHUB_PAT"
+    export GH_TOKEN
+fi
+
 # Configure git auth if GH_TOKEN is provided (GitHub CLI)
 if [ -n "$GH_TOKEN" ]; then
     export GH_TOKEN
